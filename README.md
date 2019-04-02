@@ -1,2 +1,2 @@
 # JMPlaster-Templates
-Template für the Plaster Template Generatir
+Template für the Plaster Template Generator
