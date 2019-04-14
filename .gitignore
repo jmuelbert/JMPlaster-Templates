@@ -3,6 +3,21 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Adds for Powershell-Projects
+### PowerShell ###
+# Exclude packaged modules
+*.zip
+
+# Exclude .NET assemblies from source
+*.dll
+
+# End of https://www.gitignore.io/api/powershell
+
+Dependencies/*
+.build/*
+_build-cache
+BuildOutput/*
+
 # User-specific files
 *.suo
 *.user
