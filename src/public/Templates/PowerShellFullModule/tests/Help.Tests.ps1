@@ -1,4 +1,4 @@
-$moduleName = $env:BHProjectName
+﻿$moduleName = $env:BHProjectName
 
 Describe "Help tests for $moduleName" -Tags Build {
 
@@ -12,7 +12,7 @@ Describe "Help tests for $moduleName" -Tags Build {
     }
 
     $functions = Get-Command -Module $moduleName
-    $help = $functions | % {Get-Help $_.name}
+    $help = $functions | ForEach-Object {Get-Help $_.name}
     foreach ($node in $help)
     {
         Context $node.name {

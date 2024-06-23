@@ -1,4 +1,4 @@
-<#
+﻿<#
 .Description
 Installs and loads all the required modules for the build.
 Derived from scripts written by Warren F. (RamblingCookieMonster)
@@ -9,7 +9,7 @@ param ($Task = 'Default')
 
 Write-Output "Starting build"
 
-if (-not (Get-PackageProvider | ? Name -eq nuget))
+if (-not (Get-PackageProvider | Where-Object Name -eq nuget))
 {
     Write-Output "  Install Nuget PS package provider"
     Install-PackageProvider -Name NuGet -Force -Confirm:$false | Out-Null
@@ -27,7 +27,7 @@ if (-not(Get-InstalledModule PSDepend -RequiredVersion $psDependVersion -EA Sile
 Import-Module PSDepend -RequiredVersion $psDependVersion
 Invoke-PSDepend -Path "$PSScriptRoot\build.depend.psd1" -Install -Import -Force
 
-if (-not (Get-Item env:\BH*)) 
+if (-not (Get-Item env:\BH*))
 {
     Set-BuildEnvironment
     Set-Item env:\PublishRepository -Value $publishRepository
@@ -40,7 +40,7 @@ if ($Result.Error)
 {
     exit 1
 }
-else 
+else
 {
     exit 0
 }

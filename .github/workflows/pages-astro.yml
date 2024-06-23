@@ -17,7 +17,7 @@ permissions:
 
 on: # yamllint disable-line rule:truthy
   push:
-    branches: ["main", "release", "improve_workflows"]
+    branches: ["main", "release"]
 
   pull_request:
     branches:

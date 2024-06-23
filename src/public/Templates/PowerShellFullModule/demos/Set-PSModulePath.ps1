@@ -1,4 +1,4 @@
-function Set-PSModulePath 
+﻿function Set-PSModulePath
 {
     param([string]$Path)
 

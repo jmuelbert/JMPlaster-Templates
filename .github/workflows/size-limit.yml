@@ -2,11 +2,7 @@
 name: "size-limit"
 on:
   pull_request:
-    branches:
-      - main
-      - develop
-      - release
-      - improve_build-workflow
+    types: [opened, synchronize, reopened]
 
 jobs:
   size:
@@ -14,7 +10,9 @@ jobs:
     env:
       CI_JOB_NUMBER: 1
     steps:
-      - uses: actions/checkout@v1
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - uses: andresz1/size-limit-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

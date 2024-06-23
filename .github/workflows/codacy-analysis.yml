@@ -17,20 +17,16 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: ["main", "develop", "release"]
     paths:
-      - "**.{cpp,h,hpp,py,ts,qml}"
-      - cmake/**
-      - apps/**
-      - CMakeLists.txt
+      - "src/**"
+      - build.*
       - ".github/workflows/codacy-analysis.yml"
 
   pull_request:
     # The branches below must be a subset of the branches above
     types: [opened, synchronize, reopened]
     paths:
-      - "**.{cpp,h,hpp,py,ts,qml}"
-      - cmake/**
-      - apps/**
-      - CMakeLists.txt
+      - "src/**"
+      - build.*
       - ".github/workflows/codacy-analysis.yml"
 
   schedule:

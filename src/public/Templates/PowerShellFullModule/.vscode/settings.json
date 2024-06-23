@@ -5,9 +5,7 @@
   "powershell.codeFormatting.preset": "Allman",
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
-  "editor.rulers": [
-    120
-  ],
+  "editor.rulers": [120],
   "editor.tabSize": 4,
   "[json]": {
     "editor.tabSize": 2
@@ -19,9 +17,7 @@
     "MD024": false,
     "MD029": false,
     "MD033": {
-      "allowed_elements": [
-        "kbd"
-      ]
+      "allowed_elements": ["kbd"]
     },
     "MD034": false,
     "MD038": false
