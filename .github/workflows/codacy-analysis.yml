@@ -15,22 +15,22 @@ name: Codacy Security Scan
 
 on: # yamllint disable-line rule:truthy
   push:
-    branches: ["main", "develop", "release"]
+    branches: [main, develop, release]
     paths:
-      - "src/**"
+      - src/**
       - build.*
-      - ".github/workflows/codacy-analysis.yml"
+      - .github/workflows/codacy-analysis.yml
 
   pull_request:
     # The branches below must be a subset of the branches above
     types: [opened, synchronize, reopened]
     paths:
-      - "src/**"
+      - src/**
       - build.*
-      - ".github/workflows/codacy-analysis.yml"
+      - .github/workflows/codacy-analysis.yml
 
   schedule:
-    - cron: "35 11 * * 5"
+    - cron: 35 11 * * 5
 
 permissions:
   contents: read
@@ -52,7 +52,7 @@ jobs:
 
     steps:
       # Checkout the repository to the GitHub Actions runner
-      - name: "🧰 Checkout Source Code"
+      - name: 🧰 Checkout Source Code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       # Execute Codacy Analysis CLI and generate a SARIF output with the security issues identified during the analysis

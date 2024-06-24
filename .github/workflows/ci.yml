@@ -37,22 +37,22 @@ env:
 
 jobs:
   build:
-    name: "🧊 Module Build"
+    name: 🧊 Module Build"
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: 🧰 Checkout Source Code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: "⚙️ Execute GitVersion"
+      - name: ⚙️ Execute GitVersion
         id: gitversion
         uses: gittools/actions/gitversion/execute@691c4560056ebea8d9b7fd011783cf95503aedbc # v1.1.1
 
-      - name: "⚙ Display the version"
+      - name: ⚙ Display the version
         run: |
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
 
-      - name: "⚙️ Setup dotnet"
+      - name: ⚙️ Setup dotnet
         uses: actions/setup-dotnet@4d6c8fcf3c8f7a60068d26b594648e99df24cee3 # v4.0.0
         with:
             dotnet-version: |
@@ -68,7 +68,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-     
 
-      - name: "📤 Upload artifact: Application"
+      - name: 📤 Upload artifact Application
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
         with:
           name: DotnetSolution
@@ -82,31 +82,29 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { dotnet-version: "7.x", os: ubuntu-latest }
-          - { dotnet-version: "7.x", os: windows-latest }
-          - { dotnet-version: "7.x", os: macos-latest }
-          - { dotnet-version: "6.x", os: ubuntu-latest }
-          - { dotnet-version: "6.x", os: windows-latest }
-          - { dotnet-version: "6.x", os: macos-latest }
+          - { dotnet-version: 7.x, os: ubuntu-latest }
+          - { dotnet-version: 7.x, os: windows-latest }
+          - { dotnet-version: 7.x, os: macos-latest }
+          - { dotnet-version: 6.x, os: ubuntu-latest }
+          - { dotnet-version: 6.x, os: windows-latest }
+          - { dotnet-version: 6.x, os: macos-latest }
 
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: 🧰 Checkout Source Code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: "⚙️ Execute GitVersion"
+      - name: ⚙️ Execute GitVersion
         id: gitversion
         uses: gittools/actions/gitversion/execute@691c4560056ebea8d9b7fd011783cf95503aedbc # v1.1.1
 
-      - name: "⚙ Display the version"
+      - name: ⚙ Display the version
         run: |
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
 
-      - name: "⚙️ Setup dotnet"
+      - name: ⚙️ Setup dotnet
         uses: actions/setup-dotnet@4d6c8fcf3c8f7a60068d26b594648e99df24cee3 # v4.0.0
         with:
-          dotnet-version: |
-            6.0.x
-             7.0.x
+          dotnet-version: ${{matrix.dotnet-version}}
           cache: true
   
       - name: Cache NuGet packages
@@ -117,7 +115,7 @@ jobs:
           restore-keys: |
                 ${{ runner.os }}-nuget-   
 
-      - name: "⚙️ Check dotnet sdk install & restore"
+      - name: ⚙️ Check dotnet sdk install & restore
         run: |
           dotnet --info
           dotnet restore
@@ -131,27 +129,6 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
-  update_release_draft:
-    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    permissions:
-      # write permission is required to create a github release
-      contents: write
-      # write permission is required for autolabeler
-      # otherwise, read permission is required at least
-      pull-requests: write
-    steps:
-      - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-
-      - name: Create Release Notes and Pre-Release
-        id: release_gh
-        uses: softprops/action-gh-release@v1
-        with:
-          draft: true # create a draft (unpublished) release
-          prerelease: true # identify the release as a prerelease
-          body_path: ./CHANGELOG.md # use the contents of this file as the body of the release notes
-
   deployPrereleases:
     name: Deploy Pre-Release
     if: github.ref == 'refs/heads/master'
@@ -160,7 +137,6 @@ jobs:
     needs:
       - build
       - tests
-      - update_release_draft
 
     steps:
       - name: Restore Dotnet Solution
@@ -183,7 +159,6 @@ jobs:
     needs:
       - build
       - tests
-      - update_release_draft
 
     steps:
       - name: Restore Dotnet Solution
@@ -206,14 +181,14 @@ jobs:
     needs:
       - build
       - tests
-      - update_release_draft
       - deployPrereleases
       - deploy
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Decide whether the needed jobs succeeded or failed"
+      - name: Decide whether the needed jobs succeeded or failed
+
         uses: re-actors/alls-green@223e4bb7a751b91f43eda76992bcfbf23b8b0302 # v1.2.2
         with:
           jobs: ${{ toJSON(needs) }}

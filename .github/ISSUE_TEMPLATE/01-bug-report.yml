@@ -36,8 +36,7 @@ body:
       description: Please provide a minimal example, with code, that can be run to reproduce the issue. Do NOT provide screenshots of code, or link to external repos or applications. Use ``` to format code blocks.
       placeholder: Reproduction
       value: |
-        ```python
-        import JMPlasterTemplates as cc
+        JMPlasterTemplates 
 
         ```
     validations:

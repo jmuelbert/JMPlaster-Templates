@@ -5,7 +5,7 @@
         Import-Module ($global:SUTPath)
     }
 
-    AfterAll {
+    after all {
         Unload-SUT
     }
 

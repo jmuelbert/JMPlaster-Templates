@@ -18,7 +18,7 @@ updates:
     open-pull-requests-limit: 10
     commit-message:
       include: scope
-      prefix: fix(gha)"
+      prefix: fix(gha)
 
   # Enable version updates for Docker
   - package-ecosystem: docker

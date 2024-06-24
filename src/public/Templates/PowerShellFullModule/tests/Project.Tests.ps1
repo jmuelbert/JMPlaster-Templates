@@ -34,7 +34,7 @@ Describe "PSScriptAnalyzer rule-sets" -Tag Build {
 
 Describe "General project validation: $moduleName" -Tags Build {
 
-    AfterAll {
+    after all {
         Unload-SUT
     }
 

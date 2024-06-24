@@ -17,7 +17,7 @@ permissions:
 
 on: # yamllint disable-line rule:truthy
   push:
-    branches: ["main", "release"]
+    branches: [main, release]
 
   pull_request:
     branches:
@@ -26,7 +26,7 @@ on: # yamllint disable-line rule:truthy
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
 
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: 🧰 Checkout Source Code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Build and Upload Site

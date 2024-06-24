@@ -7,7 +7,7 @@ Describe "Help tests for $moduleName" -Tags Build {
         Import-Module ($global:SUTPath)
     }
 
-    AfterAll {
+    after all {
         Unload-SUT
     }
 
