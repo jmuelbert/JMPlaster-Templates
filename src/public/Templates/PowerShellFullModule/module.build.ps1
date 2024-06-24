@@ -1,4 +1,4 @@
-﻿$script:ModuleName = $ENV:BHProjectName
+$script:ModuleName = $ENV:BHProjectName
 
 $script:Source = Join-Path $BuildRoot $ModuleName
 $script:Output = Join-Path $BuildRoot output
@@ -21,41 +21,33 @@ function CalculateFingerprint {
     )
 
     process {
-        $fingerprint = foreach ($command in $CommandList )
-        {
-            foreach ($parameter in $command.parameters.keys)
-            {
+        $fingerprint = foreach ($command in $CommandList ) {
+            foreach ($parameter in $command.parameters.keys) {
                 '{0}:{1}' -f $command.name, $command.parameters[$parameter].Name
-                $command.parameters[$parameter].aliases | Foreach-Object { '{0}:{1}' -f $command.name, $_}
+                $command.parameters[$parameter].aliases | ForEach-Object { '{0}:{1}' -f $command.name, $_ }
             }
         }
         $fingerprint
     }
 }
-function PublishTestResults
-{
+function PublishTestResults {
     param(
         [string]$Path
     )
-    if ($ENV:BHBuildSystem -eq 'Unknown')
-    {
+    if ($ENV:BHBuildSystem -eq 'Unknown') {
         return
     }
     Write-Output "Publishing test result file"
-    switch ($ENV:BHBuildSystem)
-    {
-        'AppVeyor'
-        {
+    switch ($ENV:BHBuildSystem) {
+        'AppVeyor' {
             (New-Object 'System.Net.WebClient').UploadFile(
                 "https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)",
                 $Path )
         }
-        'VSTS'
-        {
+        'VSTS' {
             # Skip; publish logic defined as task in vsts build config (see .vsts-ci.yml)
         }
-        Default
-        {
+        Default {
             Write-Warning "Publish test result not implemented for build system '$($ENV:BHBuildSystem)'"
         }
     }
@@ -80,7 +72,7 @@ function Read-Module {
             # we need to ensure $Path is one of the locations that PS will look when resolving
             # dependencies of the module it is being asked to import
             $originalPath = Get-Item -Path Env:\PSModulePath | Select-Object -Exp Value
-            $psModulePaths = $originalPath -split ';' | Where-Object {$_ -ne $Path}
+            $psModulePaths = $originalPath -split ';' | Where-Object { $_ -ne $Path }
             $revisedPath = ( @($Path) + @($psModulePaths) | Select-Object -Unique ) -join ';'
             Set-Item -Path Env:\PSModulePath -Value $revisedPath  -EA Stop
 
@@ -134,8 +126,7 @@ Task Clean {
 
 Task UnitTests {
     $TestResults = Invoke-Pester -Path Tests\*unit* -PassThru -Tag Build -ExcludeTag Slow
-    if ($TestResults.FailedCount -gt 0)
-    {
+    if ($TestResults.FailedCount -gt 0) {
         Write-Error "Failed [$($TestResults.FailedCount)] Pester tests"
     }
 }
@@ -145,8 +136,7 @@ Task FullTests {
 
     PublishTestResults $testFile
 
-    if ($TestResults.FailedCount -gt 0)
-    {
+    if ($TestResults.FailedCount -gt 0) {
         Write-Error "Failed [$($TestResults.FailedCount)] Pester tests"
     }
 }
@@ -154,8 +144,7 @@ Task FullTests {
 Task Specification {
 
     $TestResults = Invoke-Gherkin $PSScriptRoot\Spec -PassThru
-    if ($TestResults.FailedCount -gt 0)
-    {
+    if ($TestResults.FailedCount -gt 0) {
         Write-Error "[$($TestResults.FailedCount)] specification are incomplete"
     }
 }
@@ -168,25 +157,22 @@ Task CopyToOutput {
     Get-ChildItem $source -File |
         Where-Object name -NotMatch "$ModuleName\.ps[dm]1" |
         Copy-Item -Destination $Destination -Force -PassThru |
-        ForEach-Object { "  Create [.{0}]" -f $_.fullname.replace($PSScriptRoot, '')}
+        ForEach-Object { "  Create [.{0}]" -f $_.fullname.replace($PSScriptRoot, '') }
 
     Get-ChildItem $source -Directory |
         Where-Object name -NotIn $imports |
         Copy-Item -Destination $Destination -Recurse -Force -PassThru |
-        ForEach-Object { "  Create [.{0}]" -f $_.fullname.replace($PSScriptRoot, '')}
+        ForEach-Object { "  Create [.{0}]" -f $_.fullname.replace($PSScriptRoot, '') }
 }
 
 Task BuildPSM1 -Inputs (Get-Item "$source\*\*.ps1") -Outputs $ModulePath {
 
     [System.Text.StringBuilder]$stringbuilder = [System.Text.StringBuilder]::new()
-    foreach ($folder in $imports )
-    {
+    foreach ($folder in $imports ) {
         [void]$stringbuilder.AppendLine( "Write-Verbose 'Importing from [$Source\$folder]'" )
-        if (Test-Path "$source\$folder")
-        {
+        if (Test-Path "$source\$folder") {
             $fileList = Get-ChildItem "$source\$folder\*.ps1" | Where-Object Name -NotLike '*.Tests.ps1'
-            foreach ($file in $fileList)
-            {
+            foreach ($file in $fileList) {
                 $shortName = $file.fullname.replace($PSScriptRoot, '')
                 Write-Output "  Importing [.$shortName]"
                 [void]$stringbuilder.AppendLine( "# .$shortName" )
@@ -207,23 +193,20 @@ Task PublishedModuleInfo -if (-Not ( Test-Path "$output\previous-module-info.xml
 
     $previousModule = Read-Module -Name $ModuleName -Repository ($env:PublishRepository) -Path $downloadPath
 
-    if ($null -ne $previousModule -and $previousModule.GetType() -eq [System.Management.Automation.ErrorRecord])
-    {
+    if ($null -ne $previousModule -and $previousModule.GetType() -eq [System.Management.Automation.ErrorRecord]) {
         Write-Error $previousModule
         return
     }
 
-    $moduleInfo = if ($null -eq $previousModule)
-    {
+    $moduleInfo = if ($null -eq $previousModule) {
         [PsCustomObject] @{
-            Version = [System.Version]::new(0, 0, 1)
+            Version     = [System.Version]::new(0, 0, 1)
             Fingerprint = @()
         }
     }
-    else
-    {
+    else {
         [PsCustomObject] @{
-            Version = $previousModule.Version
+            Version     = $previousModule.Version
             Fingerprint = $previousModule.ExportedFunctions.Values | CalculateFingerprint
         }
     }
@@ -236,7 +219,7 @@ Task BuildPSD1 -inputs (Get-ChildItem $Source -Recurse -File) -Outputs $Manifest
     Copy-Item "$source\$ModuleName.psd1" -Destination $ManifestPath
 
 
-    $functions = Get-ChildItem "$ModuleName\Public\*.ps1" | Where-Object { $_.name -notmatch 'Tests'} | Select-Object -ExpandProperty basename
+    $functions = Get-ChildItem "$ModuleName\Public\*.ps1" | Where-Object { $_.name -notmatch 'Tests' } | Select-Object -ExpandProperty basename
     Set-ModuleFunctions -Name $ManifestPath -FunctionsToExport $functions
 
     Set-ModuleAliases -Name $ManifestPath
@@ -258,68 +241,60 @@ Task BuildPSD1 -inputs (Get-ChildItem $Source -Recurse -File) -Outputs $Manifest
 
     $bumpVersionType = 'Patch'
     '    Detecting new features'
-    $fingerprint | Where-Object {$_ -notin $oldFingerprint } | ForEach-Object {$bumpVersionType = 'Minor'; "      $_"}
+    $fingerprint | Where-Object { $_ -notin $oldFingerprint } | ForEach-Object { $bumpVersionType = 'Minor'; "      $_" }
     '    Detecting breaking changes'
-    $oldFingerprint | Where-Object {$_ -notin $fingerprint } | ForEach-Object {$bumpVersionType = 'Major'; "      $_"}
+    $oldFingerprint | Where-Object { $_ -notin $fingerprint } | ForEach-Object { $bumpVersionType = 'Major'; "      $_" }
 
     # Bump the module version
     $version = [version] (Get-Metadata -Path $manifestPath -PropertyName 'ModuleVersion')
 
-    if ( $version -lt ([version]'1.0.0') )
-    {
+    if ( $version -lt ([version]'1.0.0') ) {
         '    Still in beta, don''t bump major version'
-        if ( $bumpVersionType -eq 'Major'  )
-        {
+        if ( $bumpVersionType -eq 'Major'  ) {
             $bumpVersionType = 'Minor'
         }
-        else
-        {
+        else {
             $bumpVersionType = 'Patch'
         }
     }
 
     $publishedVersion = $previousModuleInfo.Version
-    if ( $version -lt $publishedVersion )
-    {
+    if ( $version -lt $publishedVersion ) {
         $version = $publishedVersion
     }
-    if ($version -eq $publishedVersion)
-    {
+    if ($version -eq $publishedVersion) {
         Write-Output "  Stepping [$bumpVersionType] version [$version]"
         $version = [version] (Step-Version $version -Type $bumpVersionType)
         Write-Output "  Using version: $version"
         Update-Metadata -Path $ManifestPath -PropertyName ModuleVersion -Value $version
     }
-    else
-    {
+    else {
         Write-Output "  Using version from $ModuleName.psd1: $version"
     }
 
 
-Task UpdateSource {
-    Copy-Item $ManifestPath -Destination "$source\$ModuleName.psd1"
-}
+    Task UpdateSource {
+        Copy-Item $ManifestPath -Destination "$source\$ModuleName.psd1"
+    }
 
-Task Publish {
-    # Gate deployment
-    if (
-        $ENV:BHBuildSystem -ne 'Unknown' -and
-        $ENV:BHBranchName -eq "master" -and
-        $ENV:BHCommitMessage -match '!deploy'
-    )
-    {
-        $Params = @{
-            Path  = $BuildRoot
-            Force = $true
+    Task Publish {
+        # Gate deployment
+        if (
+            $ENV:BHBuildSystem -ne 'Unknown' -and
+            $ENV:BHBranchName -eq "master" -and
+            $ENV:BHCommitMessage -match '!deploy'
+        ) {
+            $Params = @{
+                Path  = $BuildRoot
+                Force = $true
+            }
+
+            Invoke-PSDeploy @Verbose @Params
         }
-
-        Invoke-PSDeploy @Verbose @Params
+        else {
+            "Skipping deployment: To deploy, ensure that...`n" +
+            "`t* You are in a known build system (Current: $ENV:BHBuildSystem)`n" +
+            "`t* You are committing to the master branch (Current: $ENV:BHBranchName) `n" +
+            "`t* Your commit message includes !deploy (Current: $ENV:BHCommitMessage)"
+        }
     }
-    else
-    {
-        "Skipping deployment: To deploy, ensure that...`n" +
-        "`t* You are in a known build system (Current: $ENV:BHBuildSystem)`n" +
-        "`t* You are committing to the master branch (Current: $ENV:BHBranchName) `n" +
-        "`t* Your commit message includes !deploy (Current: $ENV:BHCommitMessage)"
-    }
-}

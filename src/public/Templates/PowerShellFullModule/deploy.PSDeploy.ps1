@@ -1,4 +1,4 @@
-﻿# Generic module deployment.
+# Generic module deployment.
 # This stuff should be moved to psake for a cleaner deployment view
 
 # ASSUMPTIONS:
@@ -15,8 +15,7 @@
 
 # find a folder that has psd1 of same name...
 
-if ($ENV:BHProjectName -and $ENV:BHProjectName.Count -eq 1)
-{
+if ($ENV:BHProjectName -and $ENV:BHProjectName.Count -eq 1) {
     Deploy Module {
         By PSGalleryModule {
             FromSource output\$ENV:BHProjectName

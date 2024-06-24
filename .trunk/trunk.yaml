@@ -17,13 +17,14 @@ runtimes:
     - python@3.10.8
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
+  disabled:
+    - markdown-table-prettify
   enabled:
     - markdown-link-check@3.12.2
     - biome@1.8.2
     - codespell@2.3.0
     - cspell@8.9.1
     - gitleaks@8.18.4
-    - markdown-table-prettify@3.6.0
     - pre-commit-hooks@4.6.0
     - psscriptanalyzer@1.22.0
     - semgrep@1.76.0

@@ -1,4 +1,4 @@
-﻿@{
+@{
     PSDependOptions  = @{
         Target    = '$DependencyPath/_build-cache/'
         AddToPath = $true

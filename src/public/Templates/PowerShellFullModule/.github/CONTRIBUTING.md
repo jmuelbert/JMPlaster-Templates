@@ -15,4 +15,3 @@ The more information you provide in a Github issue the easier it will be for us 
   - Include any actions taken just prior to the error.
   - Please post a screenshot of the error, a link to a Pastebin dump of the error, or embedded text of the error.
 - Any additional information.
-

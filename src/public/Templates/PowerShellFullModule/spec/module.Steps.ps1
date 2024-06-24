@@ -1,9 +1,9 @@
-﻿Given 'the module was named (\S*)' {
+Given 'the module was named (\S*)' {
     Param($Name)
     $Script:ModuleName = $Name
 
     $path = "$PSScriptRoot\.."
-    $module = Get-ChildItem -Path $path -Recurse -Filter "$ModuleName.psm1" -verbose
+    $module = Get-ChildItem -Path $path -Recurse -Filter "$ModuleName.psm1" -Verbose
     $module | should not benullorempty
     $module.fullname | Should Exist
 
@@ -13,18 +13,14 @@
 
 Given 'we use the (\S*) root folder' {
     Param($root)
-    Switch ($root)
-    {
-        'Project'
-        {
+    Switch ($root) {
+        'Project' {
             $script:BaseFolder = Resolve-Path "$PSScriptRoot\.." | Select-Object -ExpandProperty Path
         }
-        'ModuleSource'
-        {
+        'ModuleSource' {
             $script:BaseFolder = $Script:ModuleSource
         }
-        'ModuleOutput'
-        {
+        'ModuleOutput' {
             $script:BaseFolder = $Script:ModuleOutput
         }
     }
@@ -67,7 +63,7 @@ Then '(function )?(?<Function>\S*) will have comment based help' {
 }
 
 Then 'will have readthedoc pages' {
-    { Invoke-Webrequest -uri "https://$ModuleName.readthedocs.io" -UseBasicParsing } | Should Not Throw
+    { Invoke-WebRequest -Uri "https://$ModuleName.readthedocs.io" -UseBasicParsing } | Should Not Throw
 }
 
 Then '(function )?(?<Function>\S*) will have a feature specification or a pester test' {
@@ -79,15 +75,13 @@ Then '(function )?(?<Function>\S*) will have a feature specification or a pester
 
 Then 'all public functions (?<Action>.*)' {
     Param($Action)
-    $step = @{keyword = 'Then'}
+    $step = @{keyword = 'Then' }
     $AllPassed = $true
-    foreach ($command in (Get-Command -Module $ModuleName  ))
-    {
+    foreach ($command in (Get-Command -Module $ModuleName  )) {
         $step.text = ('function {0} {1}' -f $command.Name, $Action )
 
         Invoke-GherkinStep $step -Pester $Pester -Visible
-        If ( -Not $Pester.TestResult[-1].Passed )
-        {
+        If ( -Not $Pester.TestResult[-1].Passed ) {
             $AllPassed = $false
         }
 
@@ -108,19 +102,17 @@ Given 'we have (?<folder>(public)) functions?' {
 Then 'all script files pass PSScriptAnalyzer rules' {
 
     $Rules = Get-ScriptAnalyzerRule
-    $scripts = Get-ChildItem $BaseFolder -Include *.ps1, *.psm1, *.psd1 -Recurse | Where-Object fullname -notmatch 'classes'
+    $scripts = Get-ChildItem $BaseFolder -Include *.ps1, *.psm1, *.psd1 -Recurse | Where-Object fullname -NotMatch 'classes'
 
     $AllPassed = $true
 
-    foreach ($Script in $scripts )
-    {
+    foreach ($Script in $scripts ) {
         $file = $script.fullname.replace($BaseFolder, '$')
 
 
         context $file {
 
-            foreach ( $rule in $rules )
-            {
+            foreach ( $rule in $rules ) {
                 It " [$file] Rule [$rule]" {
 
                     (Invoke-ScriptAnalyzer -Path $script.FullName -IncludeRule $rule.RuleName ).Count | Should Be 0
@@ -128,8 +120,7 @@ Then 'all script files pass PSScriptAnalyzer rules' {
             }
         }
 
-        If ( -Not $Pester.TestResult[-1].Passed )
-        {
+        If ( -Not $Pester.TestResult[-1].Passed ) {
             $AllPassed = $false
         }
     }

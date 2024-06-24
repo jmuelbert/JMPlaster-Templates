@@ -1,10 +1,9 @@
-
 [cmdletbinding()]
 param ($Task = 'Default')
 
 Write-Output "Starting Build"
 
-if (-not (Get-PackageProvider | Where-Object Name -eq nuget)) {
+if (-not (Get-PackageProvider | Where-Object Name -EQ nuget)) {
     Write-Output "  Install Nuget PS package provider"
     Install-PackageProvider -Name NuGet -Force -Confirm:$false | Out-Null
 }

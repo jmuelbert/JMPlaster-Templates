@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
 
 $currentDirectory = $args[0]
@@ -8,8 +8,7 @@ $currentDirectory = $args[0]
 # cache module dependencies and build module
 $buildCachePath = Join-Path $PSScriptRoot '..\_build-cache'
 $outputPath = Join-Path $PSScriptRoot '..\output'
-if (-not(Test-Path $buildCachePath) -or -not(Test-Path $outputPath))
-{
+if (-not(Test-Path $buildCachePath) -or -not(Test-Path $outputPath)) {
     Set-Location "$PSScriptRoot\..\"
     & .\build.ps1 'build'
 }
