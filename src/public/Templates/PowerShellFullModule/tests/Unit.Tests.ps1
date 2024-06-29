@@ -4,7 +4,7 @@ Describe "Basic function unit tests" -Tags Build {
         Import-Module ($global:SUTPath)
     }
 
-    AfterAll {
+    after all {
         Unload-SUT
     }
 }

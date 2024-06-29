@@ -1,3 +1,5 @@
+ignore: |
+  - /.github/styles/alex/vale/*
 rules:
   quoted-strings:
     required: only-when-needed

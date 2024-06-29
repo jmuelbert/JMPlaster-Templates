@@ -9,9 +9,13 @@
       "**/fixtures/**",
       "**/vendor/**",
       "**/.vercel/**",
-      "**/.mypy_cache/**"
+      "**/.mypy_cache/**",
+      ".github/styles/vale/**"
     ],
-    "include": ["tests/**", "src/**"]
+    "include": [
+      "tests/**",
+      "src/**"
+    ]
   },
   "formatter": {
     "enabled": true,

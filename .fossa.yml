@@ -9,7 +9,7 @@ cli:
   project: https://github.com/jmuelbert/JMPlasterTemplates
 analyze:
   modules:
-    - name: jmbde
+    - name: JMPlasterTemplates
       type: nuget
       target: packaging/chocolatey/JMPlasterTemplates.nuspec
       path: packaging/chocolatey

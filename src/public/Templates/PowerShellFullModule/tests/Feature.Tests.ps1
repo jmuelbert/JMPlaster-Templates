@@ -5,7 +5,7 @@ Describe "Basic function feature tests" -Tags Build {
         Import-Module ($global:SUTPath)
     }
 
-    AfterAll {
+    after all {
         Unload-SUT
     }
 }
