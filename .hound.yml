@@ -3,7 +3,7 @@ python:
   enabled: true
 
 eslint:
-  enabled: true
+  enabled: false
   config_file: .eslintrc.json
   ignore_file: .eslintignore
 

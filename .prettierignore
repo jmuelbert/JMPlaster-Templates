@@ -22,7 +22,7 @@ benchmark/results/
 pnpm-lock.yaml
 
 # Formatted by Biome
-**/*.json
+# **/*.json
 **/*.js
 **/*.ts
 **/*.tsx

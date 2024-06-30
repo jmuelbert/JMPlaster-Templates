@@ -4,7 +4,6 @@
 #
 name: Add Comment to Issue
 
-# trunk-ignore(yamllint/truthy)
 on: # yamllint disable-line rule:truth
   issues:
     types:

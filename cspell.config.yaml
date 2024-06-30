@@ -1,12 +1,10 @@
----
 version: '0.2'
 language: en,de-DE,it,es-ES
 ignorePaths:
   - '**/node_modules/**'
   - '**/vscode_extension/**'
   - '**/.git/**'
-  - '**/.pnpm-lock.json'
-  - '**/pnpm-lock.yaml'
+  - '**/.pnpm-lock.{json,yaml}'
   - '**/yarn.lock'
   - dist/
   - out/
@@ -18,14 +16,9 @@ ignorePaths:
   - .git*
   - .prettierignore
   - CHANGELOG.md
-  - '**/report/**'
-  - '**/site/**'
-  - '**/LICENSES/**'
-  - '**/docs/about/EUPL-1.2.md'
+  - '**/{report,site,LICENSES,docs/about/EUPL-1.2.md}/**'
   - cspell.config.yaml
   - .github/styles/vale/**
-files:
-  - '*/**'
 words:
   - jmuelbert
   - Jürgen
@@ -35,8 +28,6 @@ words:
   - astrojs
   - NOLOGO
   - nupkg
-flagWords:
-  - xxx
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true

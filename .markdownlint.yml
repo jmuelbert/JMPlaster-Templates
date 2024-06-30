@@ -140,6 +140,6 @@
       Xcode,
       YAML,
       YouTrack,
-      ZSH,
+      ZSH
     ]
   'code_blocks': false
