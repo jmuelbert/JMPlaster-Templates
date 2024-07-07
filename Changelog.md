@@ -8,12 +8,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!-- changelog follows -->
 
-## [Unreleased]
+- Update to pwsh version
+
+## [0.0.1] 2024-07-06
 
 ### Added
 
-### Fixed
-
-### Removed
-
-## Start
+- Initial release

@@ -1,15 +1,11 @@
----
 # SPDX-FileCopyrightText: Time Lucas
 #
 # SPDX-License-Identifier: ISC
 #
-
 name: Release Drafter
-
 on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release]
-
   # pull_request event is required only for autolabeler
   pull_request:
     # Only following types are handled by the action, but one can
@@ -18,10 +14,8 @@ on: # yamllint disable-line rule:truthy
     # pull_request_target event is required for autolabeler to
     # support PRs from forks
     # pull_request_target:
-
 permissions:
   contents: read
-
 jobs:
   update_release_draft:
     permissions:
@@ -30,7 +24,6 @@ jobs:
       # write permission is required for autolabeler
       # otherwise, read permission is required at least
       pull-requests: write
-
     runs-on: ubuntu-latest
     steps:
       # (Optional) GitHub Enterprise requires GHE_HOST variable set

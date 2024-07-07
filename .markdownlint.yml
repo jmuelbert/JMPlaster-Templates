@@ -1,4 +1,3 @@
----
 # Base Markdownlint configuration
 # Extended Markdownlint configuration in doc/.markdownlint/
 'default': true
@@ -17,7 +16,7 @@
   'style': one
 'no-inline-html': false
 'hr-style':
-  'style': ---
+  'style': '---'
 'no-emphasis-as-heading': false
 'first-line-h1': false
 'code-block-style':

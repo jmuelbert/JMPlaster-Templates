@@ -1,22 +1,16 @@
----
 python:
   enabled: true
-
 eslint:
   enabled: false
   config_file: .eslintrc.json
   ignore_file: .eslintignore
-
 tslint:
   enabled: true
   config_file: tslint.json
-
 shellcheck:
   enabled: true
-
 rubocop:
   enabled: false
   config_file: .rubocop.yml
-
 swift:
   config_file: .swiftlint.yml

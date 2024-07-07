@@ -4,8 +4,10 @@ ignorePaths:
   - '**/node_modules/**'
   - '**/vscode_extension/**'
   - '**/.git/**'
-  - '**/.pnpm-lock.{json,yaml}'
+  - '**/pnpm-lock.yaml'
+  - '**/package-lock.json'
   - '**/yarn.lock'
+  - '**/tsconfig.json'
   - dist/
   - out/
   - build/

@@ -25,7 +25,6 @@ categories:
     label: testing
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: \<*_& # You can add # and @ to disable mentions, and add ` to disable code blocks.
-
 version-resolver:
   major:
     labels:
@@ -40,10 +39,8 @@ version-resolver:
       - "type: docs"
       - "type: dependencies"
       - "type: security"
-
 exclude-labels:
   - skip-changelog
-
 template: |
   ## Changes
 

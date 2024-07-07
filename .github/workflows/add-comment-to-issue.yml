@@ -1,17 +1,13 @@
----
 # SPDX-FileCopyrightText: GitHub, Inc. and contributors
 # SPDX-License-Identifier: MIT
 #
 name: Add Comment to Issue
-
 on: # yamllint disable-line rule:truth
   issues:
     types:
       - labeled
-
 permissions:
   contents: read
-
 jobs:
   add-comment-to-help-wanted:
     if: github.event.label.name == 'help wanted'
@@ -47,7 +43,6 @@ jobs:
             - Remember to **[link](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)** your pull request to this issue
 
             **:sparkles: Thank you for your contribution! :sparkles:**
-
   # https://github.com/marketplace/actions/alls-green#why
   release-all-green: # This job does nothing and is only used for the branch protection
     if: always()
@@ -55,7 +50,6 @@ jobs:
       - add-comment-to-help-wanted
       - add-comment-to-good-first-issue
     runs-on: ubuntu-latest
-
     steps:
       - name: Decide whether the needed jobs succeeded or failed
         uses: re-actors/alls-green@223e4bb7a751b91f43eda76992bcfbf23b8b0302 # v1.2.2

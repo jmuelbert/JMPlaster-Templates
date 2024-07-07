@@ -1,9 +1,7 @@
----
 # To get started with Dependabot version updates, you'll need to specify which
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
   # Maintain dependencies for GitHub Actions
@@ -19,7 +17,6 @@ updates:
     commit-message:
       include: scope
       prefix: fix(gha)
-
   # Enable version updates for Docker
   - package-ecosystem: docker
     # Look for a `Dockerfile` in the `root` directory
@@ -29,7 +26,6 @@ updates:
       interval: monthly
     commit-message:
       prefix: fix(docker)
-
   # Maintain dependencies for nuget
   - package-ecosystem: nuget # See documentation for possible values
     directory: / # Location of package manifests
@@ -37,7 +33,6 @@ updates:
       interval: monthly
     commit-message:
       prefix: fix(nuget)
-
   # Maintain dependencies for pip
   - package-ecosystem: pip # See documentation for possible values
     directory: / # Location of package manifests
@@ -45,3 +40,17 @@ updates:
       interval: monthly
     commit-message:
       prefix: fix(pip)
+  # Maintain dependencies for npm
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    commit-message:
+      prefix: fix(npm)
+  # Maintain dependencies for npm
+  - package-ecosystem: 'npm'
+    directory: '/pages'
+    schedule:
+      interval: 'monthly'
+    commit-message:
+      prefix: fix(npm for astrodoc)

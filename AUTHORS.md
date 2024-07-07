@@ -1,6 +1,6 @@
 # Credits & License
 
-Authors of checkconnect
+Authors of JMPlaster-Templates
 
 Copyright (C) 2023-2024 Jürgen Mülbert
 

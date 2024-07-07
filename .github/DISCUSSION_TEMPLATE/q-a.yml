@@ -66,10 +66,8 @@ body:
         * INCLUDE the language label (e.g. `python`) after the first three backticks to enable syntax highlighting. (e.g., ```python rather than ```).
         * Reduce your code to the minimum required to reproduce the issue if possible. This makes it much easier for others to help you.
         * Avoid screenshots when possible, as they are hard to read and (more importantly) don't allow others to copy-and-paste your code.
-
       placeholder: |
         from JMPlasterTemplates.cli import main
-
       render: python
     validations:
       required: true

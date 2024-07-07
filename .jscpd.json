@@ -10,8 +10,12 @@
         "**/report/**",
         "**/*.svg",
         "**/wwwroot/**",
-        "**/*.txt"
+        "**/*.txt",
+        "**/src/public/Templates/PowerShellFullModule/**"
     ],
-    "reporters": ["html", "markdown"],
+    "reporters": [
+        "html",
+        "markdown"
+    ],
     "threshold": 0
 }

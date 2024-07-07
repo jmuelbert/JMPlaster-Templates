@@ -1,4 +1,3 @@
----
 # SPDX-FileCopyrightText: GitHub, Inc. and contributors
 # SPDX-License-Identifier: MIT
 #
@@ -8,18 +7,14 @@
 # - Bug report
 # - Crash report
 # - Feature or enhancement
-
 name: Add issue header
-
 on: # yamllint disable-line rule:truthy
   issues:
     types:
       # Only ever run once
       - opened
-
 permissions:
   contents: read
-
 jobs:
   add-header:
     runs-on: ubuntu-latest

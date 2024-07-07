@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="49" errors="0" failures="7" not-run="0" inconclusive="0" ignored="0" skipped="2" invalid="0" date="2024-07-07" time="12:39:33">
+  <environment os-version="22.6.0" user="juergen" clr-version="8.0.6" platform="Darwin" machine-name="Jurgens-iMac.fritz.box" user-domain="" cwd="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests" nunit-version="2.5.8.0" />
+  <culture-info current-culture="de-DE" current-uiculture="de-DE" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="60.0006" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Get-JMuTemplate.tests.ps1" executed="True" result="Success" success="True" time="1.3355" asserts="0" description="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Get-JMuTemplate.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-JMuTemplate" executed="True" result="Success" success="True" time="0.7958" asserts="0" description="Get-JMuTemplate">
+            <results>
+              <test-case description="Returns the JMu template" name="Get-JMuTemplate.Returns the JMu template" time="0.6778" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1" executed="True" result="Failure" success="False" time="2.5704" asserts="0" description="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test help for Get-JMuTemplate" executed="True" result="Failure" success="False" time="0.5132" asserts="0" description="Test help for Get-JMuTemplate">
+            <results>
+              <test-suite type="TestFixture" name="Test help for Get-JMuTemplate.Parameter ProgressAction" executed="True" result="Failure" success="False" time="0.453" asserts="0" description="Test help for Get-JMuTemplate.Parameter ProgressAction">
+                <results>
+                  <test-case description="Has description" name="Test help for Get-JMuTemplate.Parameter ProgressAction.Has description" time="0.1491" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected a value, but got $null or empty.</message>
+                      <stack-trace>at $parameterHelp.Description.Text | Should -Not -BeNullOrEmpty, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:95
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:95</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Has correct [mandatory] value" name="Test help for Get-JMuTemplate.Parameter ProgressAction.Has correct [mandatory] value" time="0.0606" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected 'False', but got $null.</message>
+                      <stack-trace>at $parameterHelp.Required | Should -Be $codeMandatory, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:101
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:101</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Has correct parameter type" name="Test help for Get-JMuTemplate.Parameter ProgressAction.Has correct parameter type" time="0.0494" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected 'ActionPreference', but got $null.</message>
+                      <stack-trace>at $parameterHelpType | Should -Be $parameter.ParameterType.Name, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:106
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:106</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-case description="Help is not auto-generated" name="Test help for Get-JMuTemplate.Help is not auto-generated" time="0.057" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has description" name="Test help for Get-JMuTemplate.Has description" time="0.0494" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has example code" name="Test help for Get-JMuTemplate.Has example code" time="0.0366" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has example help" name="Test help for Get-JMuTemplate.Has example help" time="0.0413" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Test help for New-JMuModule" executed="True" result="Failure" success="False" time="1.9814" asserts="0" description="Test help for New-JMuModule">
+            <results>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter DestinationPath" executed="True" result="Success" success="True" time="0.3602" asserts="0" description="Test help for New-JMuModule.Parameter DestinationPath">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter DestinationPath.Has description" time="0.0599" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter DestinationPath.Has correct [mandatory] value" time="0.0338" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter DestinationPath.Has correct parameter type" time="0.039" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter Force" executed="True" result="Success" success="True" time="0.5032" asserts="0" description="Test help for New-JMuModule.Parameter Force">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter Force.Has description" time="0.0654" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter Force.Has correct [mandatory] value" time="0.0327" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter Force.Has correct parameter type" time="0.0332" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter NoLogo" executed="True" result="Success" success="True" time="0.6255" asserts="0" description="Test help for New-JMuModule.Parameter NoLogo">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter NoLogo.Has description" time="0.0479" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter NoLogo.Has correct [mandatory] value" time="0.032" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter NoLogo.Has correct parameter type" time="0.0381" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter PassThru" executed="True" result="Success" success="True" time="0.8425" asserts="0" description="Test help for New-JMuModule.Parameter PassThru">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter PassThru.Has description" time="0.1423" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter PassThru.Has correct [mandatory] value" time="0.0361" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter PassThru.Has correct parameter type" time="0.0323" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter ProgressAction" executed="True" result="Failure" success="False" time="1.0368" asserts="0" description="Test help for New-JMuModule.Parameter ProgressAction">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter ProgressAction.Has description" time="0.0742" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected a value, but got $null or empty.</message>
+                      <stack-trace>at $parameterHelp.Description.Text | Should -Not -BeNullOrEmpty, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:95
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:95</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter ProgressAction.Has correct [mandatory] value" time="0.0586" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected 'False', but got $null.</message>
+                      <stack-trace>at $parameterHelp.Required | Should -Be $codeMandatory, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:101
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:101</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter ProgressAction.Has correct parameter type" time="0.0501" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected 'ActionPreference', but got $null.</message>
+                      <stack-trace>at $parameterHelpType | Should -Be $parameter.ParameterType.Name, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:106
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Help.tests.ps1:106</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter Template" executed="True" result="Success" success="True" time="1.2006" asserts="0" description="Test help for New-JMuModule.Parameter Template">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter Template.Has description" time="0.0466" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter Template.Has correct [mandatory] value" time="0.059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter Template.Has correct parameter type" time="0.0542" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test help for New-JMuModule.Parameter TemplateParameters" executed="True" result="Success" success="True" time="1.4038" asserts="0" description="Test help for New-JMuModule.Parameter TemplateParameters">
+                <results>
+                  <test-case description="Has description" name="Test help for New-JMuModule.Parameter TemplateParameters.Has description" time="0.0655" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct [mandatory] value" name="Test help for New-JMuModule.Parameter TemplateParameters.Has correct [mandatory] value" time="0.0334" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has correct parameter type" name="Test help for New-JMuModule.Parameter TemplateParameters.Has correct parameter type" time="0.1005" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-case description="Help is not auto-generated" name="Test help for New-JMuModule.Help is not auto-generated" time="0.1017" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has description" name="Test help for New-JMuModule.Has description" time="0.0388" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has example code" name="Test help for New-JMuModule.Has example code" time="0.0449" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Has example help" name="Test help for New-JMuModule.Has example help" time="0.0363" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Manifest.tests.ps1" executed="True" result="Ignored" success="True" time="1.1474" asserts="0" description="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Manifest.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Module manifest" executed="True" result="Success" success="True" time="0.5384" asserts="0" description="Module manifest">
+            <results>
+              <test-suite type="TestFixture" name="Module manifest.Validation" executed="True" result="Success" success="True" time="0.535" asserts="0" description="Module manifest.Validation">
+                <results>
+                  <test-case description="Has a valid manifest" name="Module manifest.Validation.Has a valid manifest" time="0.0877" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid name in the manifest" name="Module manifest.Validation.Has a valid name in the manifest" time="0.0324" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid root module" name="Module manifest.Validation.Has a valid root module" time="0.0444" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid version in the manifest" name="Module manifest.Validation.Has a valid version in the manifest" time="0.0399" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid description" name="Module manifest.Validation.Has a valid description" time="0.0436" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid author" name="Module manifest.Validation.Has a valid author" time="0.0321" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid guid" name="Module manifest.Validation.Has a valid guid" time="0.068" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid copyright" name="Module manifest.Validation.Has a valid copyright" time="0.0885" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Has a valid version in the changelog" name="Module manifest.Validation.Has a valid version in the changelog" time="0.0535" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Changelog and manifest versions are the same" name="Module manifest.Validation.Changelog and manifest versions are the same" time="0.0404" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Git tagging" executed="True" result="Ignored" success="True" time="0.6539" asserts="0" description="Git tagging">
+            <results>
+              <test-case description="Is tagged with a valid version" name="Git tagging.Is tagged with a valid version" time="0.0774" asserts="0" success="False" result="Ignored" executed="False" />
+              <test-case description="Matches manifest version" name="Git tagging.Matches manifest version" time="0.0338" asserts="0" success="False" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Meta.tests.ps1" executed="True" result="Failure" success="False" time="49.3713" asserts="0" description="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Meta.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Text files formatting" executed="True" result="Failure" success="False" time="0.1597" asserts="0" description="Text files formatting">
+            <results>
+              <test-suite type="TestFixture" name="Text files formatting.File encoding" executed="True" result="Success" success="True" time="0.0667" asserts="0" description="Text files formatting.File encoding">
+                <results>
+                  <test-case description="No text file uses Unicode/UTF-16 encoding" name="Text files formatting.File encoding.No text file uses Unicode/UTF-16 encoding" time="0.0639" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Text files formatting.Indentations" executed="True" result="Failure" success="False" time="0.1513" asserts="0" description="Text files formatting.Indentations">
+                <results>
+                  <test-case description="No text file use tabs for indentations" name="Text files formatting.Indentations.No text file use tabs for indentations" time="0.082" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected 0, but got 7.</message>
+                      <stack-trace>at $totalTabsCount | Should -Be 0, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Meta.tests.ps1:47
+at &lt;ScriptBlock&gt;, /Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/Meta.tests.ps1:47</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/New-JMuModule.tests.ps1" executed="True" result="Success" success="True" time="5.5761" asserts="0" description="/Users/juergen/Projects/GitHub/JMPlaster-Templates/tests/New-JMuModule.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-JMuModule" executed="True" result="Success" success="True" time="5.3341" asserts="0" description="New-JMuModule">
+            <results>
+              <test-suite type="TestFixture" name="New-JMuModule.Template provided" executed="True" result="Success" success="True" time="0.1997" asserts="0" description="New-JMuModule.Template provided">
+                <results>
+                  <test-case description="Creates a module from a passed in template" name="New-JMuModule.Template provided.Creates a module from a passed in template" time="0.1445" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="New-JMuModule.No template provided" executed="True" result="Success" success="True" time="0.2634" asserts="0" description="New-JMuModule.No template provided">
+                <results>
+                  <test-case description="Creates a module from the included template" name="New-JMuModule.No template provided.Creates a module from the included template" time="0.0581" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
