@@ -34,7 +34,7 @@ jobs:
       - name: Build and Upload Site
         uses: withastro/action@9a7959a16949e620a22e74f81c10cb7ce3b76924 # v1.0.6
         with:
-          path: ./pages
+          path: ./docs
           # The root location of your Astro project inside the
           # repository. (optional)
           # node-version: 16 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
