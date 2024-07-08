@@ -30,8 +30,5 @@ pnpm-lock.yaml
 **/*.mjs
 **/*.cjs
 
-# Formatted by taplo
-**/*.toml
-
 # vale configs
 .github/styles/vale/**
