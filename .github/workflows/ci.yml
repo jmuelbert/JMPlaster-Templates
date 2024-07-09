@@ -1,0 +1,30 @@
+---
+name: CI
+
+on: # yamllint disable-line rule:truthy
+  [push, pull_request]
+
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+    name: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: 🧰 Checkout Source Code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Test
+        run: pwsh -f ./build.ps1 -Task Test -Bootstrap

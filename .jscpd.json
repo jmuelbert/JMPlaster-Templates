@@ -1,0 +1,21 @@
+{
+    "ignore": [
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/.rbenv/**",
+        "**/.venv/**",
+        "**/*cache*/**",
+        "**/.github/**",
+        "**/.idea/**",
+        "**/report/**",
+        "**/*.svg",
+        "**/wwwroot/**",
+        "**/*.txt",
+        "**/src/public/Templates/PowerShellFullModule/**"
+    ],
+    "reporters": [
+        "html",
+        "markdown"
+    ],
+    "threshold": 0
+}

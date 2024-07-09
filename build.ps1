@@ -1,68 +1,60 @@
+[cmdletbinding(DefaultParameterSetName = 'Task')]
+param(
+    # Build task(s) to execute
+    [parameter(ParameterSetName = 'task', position = 0)]
+    [ArgumentCompleter( {
+            param($Command, $Parameter, $WordToComplete, $CommandAst, $FakeBoundParams)
+            $psakeFile = './psakeFile.ps1'
+            switch ($Parameter) {
+                'Task' {
+                    if ([string]::IsNullOrEmpty($WordToComplete)) {
+                        Get-PSakeScriptTasks -buildFile $psakeFile | Select-Object -ExpandProperty Name
+                    } else {
+                        Get-PSakeScriptTasks -buildFile $psakeFile |
+                        Where-Object { $_.Name -match $WordToComplete } |
+                        Select-Object -ExpandProperty Name
+                    }
+                }
+                Default {
+                }
+            }
+        })]
+    [string[]]$Task = 'default',
 
-[cmdletbinding()]
-param ($Task = 'Default')
+    # Bootstrap dependencies
+    [switch]$Bootstrap,
 
-Write-Output "Starting Build"
+    # List available build tasks
+    [parameter(ParameterSetName = 'Help')]
+    [switch]$Help,
 
-if (-not (Get-PackageProvider | Where-Object Name -eq nuget)) {
-    Write-Output "  Install Nuget PS package provider"
-    Install-PackageProvider -Name NuGet -Force -Confirm:$false | Out-Null
-}
+    [pscredential]$PSGalleryApiKey
+)
 
+$ErrorActionPreference = 'Stop'
 
-$publishRepository = 'PSGallery'
-
-# Grab nuget bits, install modules, set build variables, start build.
-Write-Output "  Install And Import Build Modules"
-
-$psDependVersion = '0.3.0'
-if (-not(Get-InstalledModule -Name PSDepend -RequiredVersion $psDependVersion -EA SilentlyContinue)) {
-    Install-Module PSDepend -RequiredVersion $psDependVersion -Force -Scope CurrentUser
-}
-
-Import-Module -Name PSDepend -RequiredVersion $psDependVersion
-Invoke-PSDepend -Path "$PSScriptRoot\build.depend.psd1" -Install -Import -Force
-
-if (-not (Get-Item env:\BH*)) {
-    Set-BuildEnvironment
-    Set-Item env:\PublishRepository -Value $publishRepository
-}
-. "$PSScriptRoot\tests\Unload-SUT.ps1"
-
-Write-Output "  InvokeBuild"
-Invoke-Build $Task -Result result
-if ($Result.Error) {
-    exit 1
-}
-else {
-    exit 0
-}
-
-#endregion Dependency checks
-
-$currentPath = Split-Path $MyInvocation.MyCommand.Path -Parent
-$outputPath = Join-Path -Path $currentPath -ChildPath "bin"
-
-if ($null -eq (Get-Command New-ExternalHelp -ErrorAction SilentlyContinue)) {
-    throw "Please install PlatyPS using: Install-Module PlatyPS -Scope currentuser"
-}
-
-if ($Clean) {
-    Write-Verbose "Cleaning $outputPath" -Verbose
-    try {
-        Remove-Item -Path $outputPath -Recurse -Force -ErrorAction Stop
+# Bootstrap dependencies
+if ($Bootstrap.IsPresent) {
+    Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    if (-not (Get-Module -Name PSDepend -ListAvailable)) {
+        Install-Module -Name PSDepend -Repository PSGallery
     }
-    catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning "$outputPath does not exist.  Skipping clean."
+    Import-Module -Name PSDepend -Verbose:$false
+    Invoke-PSDepend -Path './requirements.psd1' -Install -Import -Force -WarningAction SilentlyContinue
+}
+
+# Execute psake task(s)
+$psakeFile = './psakeFile.ps1'
+if ($Help.IsPresent) {
+    Get-PSakeScriptTasks -buildFile $psakeFile  |
+    Format-Table -Property Name, Description, Alias, DependsOn
+} else {
+    Set-BuildEnvironment -Force
+    $parameters = @{}
+    if ($PSGalleryApiKey) {
+        $parameters['galleryApiKey'] = $PSGalleryApiKey
     }
+    Invoke-psake -buildFile $psakeFile -taskList $Task -nologo -parameters $parameters
+    exit ( [int]( -not $psake.build_success ) )
 }
-
-if (-not (Test-Path -PathType Container $outputPath)) {
-    New-Item -ItemType Directory -Path $outputPath
-}
-
-
-Write-Verbose "Converting help" -Verbose
-New-ExternalHelp -OutputPath $outputPath -Path .\docs\Module\ -Force
-
-Write-Verbose "Module saved to: $outputPath" -Verbose

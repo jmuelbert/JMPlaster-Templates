@@ -1,0 +1,45 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: JMPlasterTemplate
+Upstream-Contact: <juergen.muelbert@outlook.de>
+source: https://www.github.com/jmuelbert/JMPlasterTemplate
+
+# source code
+
+Files: JMu/*
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: EUPL-1.2
+
+# tests
+
+Files: tests/*
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: EUPL-1.2
+
+# documentation (md + mdx files)
+
+Files: AUTHORS.md Changelog.md README.md SECURITY.md docs/README.md docs/src/env.d.ts docs/src/content/*
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: CC-BY-SA-4.0
+
+# documentation artwork
+
+Files: docs/public/favicon.svg docs/src/assets/houston.webp
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: CC-BY-SA-4.0
+
+# documentation config
+
+Files: docs/.gitignore docs/.vscode/* docs/astro.config.mjs docs/package.json docs/pnpm-lock.yaml docs/pnpm-workspace.yaml docs/tsconfig.json
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: BSD-3-Clause
+
+# config files
+
+Files: .codespellrc .editorconfig .fossa.yml .git-blame-ignore-revs .gitattributes .gitignore .hound.yml .jscpd.json .markdownlint.yml .mega-linter.yml .npmrc .prettierignore .prettierrc.yaml .stylelintrc.json .vale.ini .vscode/extensions.json .vscode/launch.json.yamllint.yml biome.json cspell.config.yaml cspell.json goodcheck.yml package.json pnpm-lock.yaml pnpm-workspace.yaml
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: BSD-3-Clause
+
+# artwork
+Files: ui/resources/gammaray/*.png
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: GPL-2.0-or-later
