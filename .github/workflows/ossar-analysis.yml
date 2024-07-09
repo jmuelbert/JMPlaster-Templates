@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       # Ensure a compatible version of dotnet is installed.
       # The [Microsoft Security Code Analysis CLI](https://aka.ms/mscadocs) is built with dotnet v3.1.201.
@@ -60,7 +60,7 @@ jobs:
       #     dotnet-version: '3.1.x'
       # Run open source static analysis tools
       - name: Run OSSAR
-        uses: github/ossar-action@fae13e456b9973657a670eef6bccc3a4c2b5153d # main
+        uses: github/ossar-action@4e96c4f6e591eb4b991abfd459e40b136a317aea # main
         id: ossar
 
       # Upload the results to GitHub's code scanning dashboard.
