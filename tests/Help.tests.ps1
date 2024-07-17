@@ -86,7 +86,7 @@ Describe "Test help for <_.Name>" -ForEach $commands {
         BeforeAll {
             $parameter = $_
             $parameterName = $parameter.Name
-            $parameterHelp = $commandHelp.parameters.parameter | Where-Object Name -eq $parameterName
+            $parameterHelp = $commandHelp.parameters.parameter | Where-Object Name -EQ $parameterName
             $parameterHelpType = if ($parameterHelp.ParameterValue) { $parameterHelp.ParameterValue.Trim() }
         }
 

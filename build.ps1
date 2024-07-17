@@ -9,10 +9,11 @@ param(
                 'Task' {
                     if ([string]::IsNullOrEmpty($WordToComplete)) {
                         Get-PSakeScriptTasks -buildFile $psakeFile | Select-Object -ExpandProperty Name
-                    } else {
+                    }
+                    else {
                         Get-PSakeScriptTasks -buildFile $psakeFile |
-                        Where-Object { $_.Name -match $WordToComplete } |
-                        Select-Object -ExpandProperty Name
+                            Where-Object { $_.Name -match $WordToComplete } |
+                            Select-Object -ExpandProperty Name
                     }
                 }
                 Default {
@@ -48,8 +49,9 @@ if ($Bootstrap.IsPresent) {
 $psakeFile = './psakeFile.ps1'
 if ($Help.IsPresent) {
     Get-PSakeScriptTasks -buildFile $psakeFile  |
-    Format-Table -Property Name, Description, Alias, DependsOn
-} else {
+        Format-Table -Property Name, Description, Alias, DependsOn
+}
+else {
     Set-BuildEnvironment -Force
     $parameters = @{}
     if ($PSGalleryApiKey) {

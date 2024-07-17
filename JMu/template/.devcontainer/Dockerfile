@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM mcr.microsoft.com/powershell:latest
+FROM mcr.microsoft.com/powershell:lts-ubuntu-22.04
 
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
@@ -14,7 +14,12 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 # install git iproute2, process tools
-RUN apt-get update && apt-get -y install git openssh-client less iproute2 procps \
+RUN apt-get update && apt-get --no-install-recommends -y install \
+    git=2.34.1 \
+    openssh-client=8.9p1 \
+    less=590 \
+    iproute2=5.15.0 \
+    procps=3.3.17 \
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \

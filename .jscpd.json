@@ -11,7 +11,10 @@
         "**/*.svg",
         "**/wwwroot/**",
         "**/*.txt",
-        "**/src/public/Templates/PowerShellFullModule/**"
+        "**/docs/.astro/**",
+        "**/template/tests/**",
+        "**/template/.vscode/**",
+        "**/template/build.ps1"
     ],
     "reporters": [
         "html",

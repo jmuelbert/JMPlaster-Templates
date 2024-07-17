@@ -1,7 +1,7 @@
-# Contributing to JMPlasterTemplates
+# Contributing to JMPlaster-Templates
 
-JMPlasterTemplates is a large project and contributions are more than welcome, so
-thank you for wanting to contribute to JMPlasterTemplates!
+JMPlaster-Templates is a large project and contributions are more than welcome, so
+thank you for wanting to contribute to JMPlaster-Templates!
 
 ---
 
@@ -14,7 +14,7 @@ but they must be relevant as explained below.
   feature branch, and not from _develop_. See below for why.
 - **No merge-commits** If you have commits that looks like this _"Merge
   branch 'my-branch' into develop"_ or _"Merge branch 'develop' of
-  <https://github.com/jmuelbert/JMPlasterTemplates> into develop"_ you're
+  <https://github.com/jmuelbert/JMPlaster-Templates/> into develop"_ you're
   probably using merge instead of
   [rebase](https://help.github.com/articles/about-git-rebase) locally. See
   below on _Handling updates from upstream_.
@@ -62,32 +62,32 @@ why the changes are needed.
 
 Make sure you have a [GitHub](https://github.com/) account.
 
-- Fork, clone, add upstream to the JMPlasterTemplates repository. See
+- Fork, clone, add upstream to the JMPlaster-Templates repository. See
   [Fork a repo](https://help.github.com/articles/fork-a-repo) for more
   detailed instructions or follow the instructions below.
 
-- Fork by clicking _Fork_ on <https://github.com/jmuelbert/JMPlasterTemplates>
+- Fork by clicking _Fork_ on <https://github.com/jmuelbert/JMPlaster-Templates/>
 
 - Clone your fork locally.
 
 ```bash
-git clone https://github.com/jmuelbert/JMPlasterTemplates
+git clone https://github.com/jmuelbert/JMPlaster-Templates/
 ```
 
 - Add an upstream remote.
 
 ```bash
-git remote add upstream https://github.com/YOUR-USERNAME/JMPlasterTemplates
+git remote add upstream https://github.com/YOUR-USERNAME/JMPlaster-Templates
 ```
 
 You now have two remotes: _upstream_ points to
-<https://github.com/jmuelbert/JMPlasterTemplates>, and _origin_ points to your
+<https://github.com/jmuelbert/JMPlaster-Templates/>, and _origin_ points to your
 fork on GitHub.
 
 - Make changes. See below.
 
 Unsure where to start? Issues marked with
-[_up for grabs_](https://github.com/jmuelbert/JMPlasterTemplates/labels/up%20for%20grabs)
+[_up for grabs_](https://github.com/jmuelbert/JMPlaster-Templates/labels/up%20for%20grabs)
 are things we want help with.
 
 See also:
@@ -101,7 +101,7 @@ New to Git? See
 **Never** work directly on _dev_ or _main_ and you should never send a pull
 request from main - always from a feature branch created by you.
 
-- Pick an [issue](https://github.com/jmuelbert/JMPlasterTemplates/issues). If no
+- Pick an [issue](https://github.com/jmuelbert/JMPlaster-Templates/issues/). If no
   issue exists (search first) create one.
 - Get any changes from _upstream_.
 

@@ -1,4 +1,4 @@
-@{
+﻿@{
     RootModule        = 'JMu.psm1'
     ModuleVersion     = '0.0.1'
     GUID              = '24effa48-ac05-4efd-872d-40d556089ce0'
