@@ -19,6 +19,7 @@ inout
 ipynb
 linkcheckerrc
 NOPASSWD
+Omni
 phoenisx
 pkgs
 PYTHONUNBUFFERED
@@ -33,8 +34,8 @@ tamasfe
 tseslint
 unstall
 unstalling
-visualstudioexptteam
 vcproj
+visualstudioexptteam
 vscodeintellicodes
 vsprops
 webp
