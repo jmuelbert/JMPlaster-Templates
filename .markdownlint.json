@@ -7,6 +7,13 @@
   "ul-style": {
     "style": "dash"
   },
+  "ul-indent": {
+    "indent": 4
+  },
+  "list-marker-space": {
+    "ul-single": 3,
+    "ul-multi": 3
+  },
   "no-trailing-spaces": false,
   "line-length": false,
   "no-duplicate-header": {
@@ -156,5 +163,5 @@
       "ZSH"
     ]
   },
-  "code_blocks"': false
+  "code_blocks": false
 }
