@@ -18,6 +18,7 @@ ignorePaths:
   - .git*
   - .prettierignore
   - CHANGELOG.md
+  - LICENSE
   - '**/{report,site,LICENSES,docs/about/EUPL-1.2.md}/**'
   - cspell.config.yaml
   - .github/styles/vale/**
@@ -28,8 +29,23 @@ words:
   - JMPlasterTemplates
   - Astro
   - astrojs
+  - Assigments
+  - BHPS
+  - CICD
+  - Jenkkinsfile
+  - juneb
   - NOLOGO
+  - nonewline
   - nupkg
+  - psake
+  - pscredential
+  - PSGALLERY
+  - psobject
+  - accessibilities
+  - ipascalcase
+  - tpascalcase
+  - Whatif
+
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true

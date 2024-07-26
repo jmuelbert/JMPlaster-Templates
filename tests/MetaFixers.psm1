@@ -49,7 +49,7 @@ function Get-TextFilesList {
 
     process {
         Get-ChildItem -Path $Root -File -Recurse |
-        Where-Object { $_.Extension -in $txtFileExtentions }
+            Where-Object { $_.Extension -in $txtFileExtentions }
     }
 }
 

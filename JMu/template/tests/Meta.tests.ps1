@@ -25,7 +25,7 @@ BeforeAll {
         $unicodeFilesCount | Should -Be 0
 
         $fileName = $textFile.FullName
-        (Get-Content $fileName -Raw) | Select-String "`t" | Foreach-Object {
+        (Get-Content $fileName -Raw) | Select-String "`t" | ForEach-Object {
             Write-Warning (
                 "There are tabs in $fileName." +
                 " Use Fixer 'Get-TextFilesList `$pwd | ConvertTo-SpaceIndentation'."

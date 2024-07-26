@@ -4,7 +4,8 @@ $public = @(Get-ChildItem -Path $publicFunctionsPath -Recurse)
 foreach ($file in $public) {
     try {
         . $file.FullName
-    } catch {
+    }
+    catch {
         throw "Unable to dot source [$($file.FullName)]"
     }
 }

@@ -62,7 +62,8 @@ function New-JMuModule {
     process {
         if ($Template) {
             $templatePath = $Template.TemplatePath
-        } else {
+        }
+        else {
             # Get the Plaster template included in the JMTest module
             $moduleBase = $ExecutionContext.SessionState.Module.ModuleBase
             $t = Get-PlasterTemplate -Path $moduleBase
@@ -81,7 +82,8 @@ function New-JMuModule {
             if ($Force -or $PSCmdlet.ShouldProcess($templatePath, 'Create module from template')) {
                 Invoke-Plaster @plasterParams @TemplateParameters
             }
-        } else {
+        }
+        else {
             # We should never see this but...belt and suspenders and all that.
             Write-Error "Unable to find Plaster template at [$templatePath]"
         }

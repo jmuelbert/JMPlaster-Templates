@@ -2,6 +2,7 @@ aiohttp
 apdisk
 biomejs
 Bxml
+codespellrc
 davidanson
 dbaeumer
 debugpy
@@ -17,6 +18,8 @@ icns
 inout
 ipynb
 linkcheckerrc
+NOPASSWD
+Omni
 phoenisx
 pkgs
 PYTHONUNBUFFERED
@@ -24,14 +27,18 @@ rsource
 Scriptish
 Signup
 spack
+stylelintrc
 svneol
+SYFT
 tamasfe
+tseslint
 unstall
 unstalling
-visualstudioexptteam
 vcproj
+visualstudioexptteam
 vscodeintellicodes
 vsprops
+webp
 wheight
 xbps
 yzhang
